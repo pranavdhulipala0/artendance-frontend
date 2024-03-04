@@ -8,7 +8,7 @@ export async function connectToDatabase() {
   }
 
   try {
-    const client = await MongoClient.connect('mongodb+srv://artendance:Qwerty123@cluster0.lvtxm2j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+    const client = await MongoClient.connect('mongodb+srv://artendance:Qwerty123@cluster0.lvtxm2j.mongodb.net/Artendance?retryWrites=true&w=majority', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
