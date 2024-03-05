@@ -19,9 +19,9 @@ const Navbar = ({ setBatch, setStartDate, setEndDate, batches }) => {
   return (
     <>
       <div className='flex mx-auto py-8 justify-center'>
-        <h4>Start date: </h4>
+        <h4>  From: </h4>
         <input type="date" value={startDate} onChange={handleStartDateChange} />
-        <h4>End date:</h4>
+        <h4>To:</h4>
         <input type="date" value={endDate} onChange={handleEndDateChange} />
         <Button.Group outline>
           {batches.map((batch) => (

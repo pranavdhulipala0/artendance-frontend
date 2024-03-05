@@ -24,7 +24,8 @@ export async function POST(request: Request){
     //     matchCondition['Date'] = { '$lte': endDate.toISOString() };
     // }
     if (date) {
-        matchCondition['Date'] = date.toISOString();
+        // Filter documents where the Date field matches the selected date
+        matchCondition['Date'] = date.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
     }
     
     if (username) {
