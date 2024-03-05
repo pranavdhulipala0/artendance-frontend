@@ -1,10 +1,10 @@
-// Navbar.js
-import React, { useState } from 'react';
-import { Button } from 'flowbite-react';
+"use client"
+import React, { useState } from "react";
+import { Button } from "flowbite-react";
 
 const Navbar = ({ setBatch, setStartDate, setEndDate, batches }) => {
-  const [startDate, setStartDateLocal] = useState('');
-  const [endDate, setEndDateLocal] = useState('');
+  const [startDate, setStartDateLocal] = useState("");
+  const [endDate, setEndDateLocal] = useState("");
 
   const handleStartDateChange = (e) => {
     setStartDateLocal(e.target.value);
@@ -17,20 +17,26 @@ const Navbar = ({ setBatch, setStartDate, setEndDate, batches }) => {
   };
 
   return (
-    <>
-      <div className='flex mx-auto py-8 justify-center'>
-        <h4>  From: </h4>
-        <input type="date" value={startDate} onChange={handleStartDateChange} />
-        <h4>To:</h4>
-        <input type="date" value={endDate} onChange={handleEndDateChange} />
-        <Button.Group outline>
-          {batches.map((batch) => (
-            <Button key={batch} onClick={() => setBatch(batch)}>{batch}</Button>
-          ))}
-        </Button.Group>
+    <div className="flex flex-col mx-auto py-8 items-center">
+      <Button.Group outline>
+        {batches.map((batch) => (
+          <Button key={batch} onClick={() => setBatch(batch)}>
+            {batch}
+          </Button>
+        ))}
+      </Button.Group>
+      <div className="flex justify-center mt-4">
+        <div className="mr-4">
+          <h4>From:</h4>
+          <input className = "rounded-lg" type="date" value={startDate} onChange={handleStartDateChange} />
+        </div>
+        <div>
+          <h4>To:</h4>
+          <input className = "rounded-lg"  type="date" value={endDate} onChange={handleEndDateChange} />
+        </div>
       </div>
-    </>
+    </div>
   );
-}
+};
 
 export default Navbar;

@@ -1,6 +1,6 @@
 // route.ts
 import { NextRequest } from "next/server";
-import { connectToDatabase } from '../dbConfig/dbConfig';
+import { connectToDatabase } from '../dbConfig/dbconfig';
 
 
 export async function POST(request: Request){
@@ -31,7 +31,7 @@ export async function POST(request: Request){
         }, {
           '$group': {
             '_id': '$Date', 
-            'count': {
+            'presentees': {
               '$sum': 1
             }, 
             'usernames': {

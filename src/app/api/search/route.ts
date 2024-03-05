@@ -1,6 +1,6 @@
 // route.ts
 import { NextRequest } from "next/server";
-import { connectToDatabase } from '../dbConfig/dbConfig';
+import { connectToDatabase } from '../dbConfig/dbconfig';
 
 export async function POST(request: Request){
     const details = await request.json();

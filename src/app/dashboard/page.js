@@ -7,7 +7,7 @@ import SideBar from "../sidebar/page.js";
 const Dashboard = () => {
   return (
     <>
-    <div className='flex flex-cols-2 items-center pt-2'>
+    <div className='flex flex-col-2 '>
     <SideBar />
     <MainContent />
     </div>

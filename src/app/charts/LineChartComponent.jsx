@@ -36,7 +36,7 @@
 //           {/* <Button
 //             className="h-8 w-16"
 //             onClick={() => setViewIndex((viewIndex + 1) % views.length)}
-//             color="blue"
+//             color="#0976d8"
 //           >
 //             <p className="text-sm">Toggle</p>
 //           </Button> */}
@@ -61,15 +61,18 @@ import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const LineChartComponent = ({ chartData }) => {
+
+
+
   return (
     <ResponsiveContainer className="flex items-center mx-auto pt-4 p-3 m-2 mb-8 shadow-outline rounded-lg border shadow-md" width="100%" height={350}>
       <LineChart data={chartData}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="_id" />
+        <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="count" stroke="#8884d8" />
+        <Line type="monotone" dataKey="count" stroke="#0976d8" />
       </LineChart>
     </ResponsiveContainer>
   );
