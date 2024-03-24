@@ -28,12 +28,25 @@
 
 // export default BarChartComponent;
 
-import React, { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React, { useState } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 const BarChartComponent = ({ chartData }) => {
   return (
-    <ResponsiveContainer className="flex items-center mx-auto pt-4 p-3 m-2 mb-8 shadow-outline rounded-lg border shadow-md" width="100%" height={350}>
+    <ResponsiveContainer
+      className="flex items-center mx-auto pt-4 p-3 m-2 mb-8 shadow-outline rounded-lg border shadow-md"
+      width="100%"
+      height={350}
+    >
       <BarChart data={chartData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
@@ -44,6 +57,6 @@ const BarChartComponent = ({ chartData }) => {
       </BarChart>
     </ResponsiveContainer>
   );
-}
+};
 
 export default BarChartComponent;

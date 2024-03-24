@@ -38,7 +38,7 @@ const MainContent = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const apiUrl = "/api/details";
+      const apiUrl = "http://localhost:5000/api/details/details";
       const requestData = {
         method: "POST",
         headers: {

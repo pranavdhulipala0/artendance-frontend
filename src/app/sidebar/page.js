@@ -12,12 +12,12 @@ const SideBar = () => {
             <Sidebar.Item href="dashboard" icon={HiChartPie}>
               Dashboard
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiViewBoards} labelColor="dark">
+            {/* <Sidebar.Item href="#" icon={HiViewBoards} labelColor="dark">
               Requests
-            </Sidebar.Item>
+            </Sidebar.Item> */}
 
             <Sidebar.Item href="/search-content" icon={HiTable}>
-              Search
+              Student Analytics
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={HiUser}>
               Logout

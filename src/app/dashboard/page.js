@@ -1,6 +1,6 @@
 import React from 'react';
 import MainContent from "../main-content/page.js";
-import SideBar from "../sidebar/page.js";
+import SideBar from "../sidebar/page.js"
 
 
 

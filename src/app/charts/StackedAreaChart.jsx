@@ -7,12 +7,9 @@ import {
   Tooltip,
   Area,
   ResponsiveContainer,
-  PieChart,
-  Pie,
-  Legend,
 } from "recharts";
 
-const PieChartComponent = () => {
+const StackedAreaChart = () => {
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -47,37 +44,48 @@ const PieChartComponent = () => {
   }, []);
 
   return (
-    <>
-      {" "}
-      {!loading && chartData.length > 0 && (
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <PieChart width={400} height={400}>
-            <Pie
-              dataKey="EliteCount"
-              data={chartData}
-              cx={200}
-              cy={200}
-              outerRadius={80}
-              fill="#8884d8"
-              label
-            />
-            <Pie
-              dataKey="FSACount"
-              data={chartData}
-              cx={200}
-              cy={200}
-              innerRadius={85}
-              outerRadius={100}
-              fill="#82ca9d"
-              label
-            />
-            <Legend />
-            <Tooltip />
-          </PieChart>
+    <div style={{ width: "100%", height: "400px", position: "relative" }}>
+      {loading && (
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          Loading...
         </div>
       )}
-    </>
+      {!loading && chartData.length > 0 && (
+        <ResponsiveContainer width="100%" height={400}>
+          <AreaChart
+            data={chartData}
+            margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="Date" />
+            <YAxis />
+            <Tooltip />
+            <Area
+              type="monotone"
+              dataKey="EliteCount"
+              stackId="1"
+              stroke="#8884d8"
+              fill="#8884d8"
+            />
+            <Area
+              type="monotone"
+              dataKey="FSACount"
+              stackId="1"
+              stroke="#82ca9d"
+              fill="#82ca9d"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      )}
+    </div>
   );
 };
 
-export default PieChartComponent;
+export default StackedAreaChart;
