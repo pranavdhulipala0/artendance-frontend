@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { Button } from "flowbite-react";
 
-const Navbar = ({ setBatch, setStartDate, setEndDate, batches }) => {
+const Navbar = ({ setBatch, setStartDate, setEndDate }) => {
   const [startDate, setStartDateLocal] = useState("");
   const [endDate, setEndDateLocal] = useState("");
-
+  const batches = ["Elite", "FSA"];
   const handleStartDateChange = (e) => {
     setStartDateLocal(e.target.value);
     setStartDate(e.target.value);
@@ -28,11 +28,21 @@ const Navbar = ({ setBatch, setStartDate, setEndDate, batches }) => {
       <div className="flex justify-center mt-4">
         <div className="mr-4">
           <h4>From:</h4>
-          <input className = "rounded-lg" type="date" value={startDate} onChange={handleStartDateChange} />
+          <input
+            className="rounded-lg"
+            type="date"
+            value={startDate}
+            onChange={handleStartDateChange}
+          />
         </div>
         <div>
           <h4>To:</h4>
-          <input className = "rounded-lg"  type="date" value={endDate} onChange={handleEndDateChange} />
+          <input
+            className="rounded-lg"
+            type="date"
+            value={endDate}
+            onChange={handleEndDateChange}
+          />
         </div>
       </div>
     </div>

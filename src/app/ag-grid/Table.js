@@ -23,20 +23,14 @@ const Table = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          className: selectedClass === "All" ? undefined : selectedClass,
-          username,
+          college: "KMIT",
         }),
       };
 
-      // Include date in the request body if selectedDate is not empty
-      if (selectedDate !== "") {
-        requestBody.body = {
-          ...requestBody.body,
-          date: new Date(selectedDate).toISOString().split("T")[0],
-        };
-      }
-
-      const response = await fetch("/api/search", requestBody);
+      const response = await fetch(
+        "http://localhost:5000/api/details/table-details",
+        requestBody
+      );
       const data = await response.json();
       setRowData(data);
     } catch (error) {
@@ -73,11 +67,11 @@ const Table = () => {
     //     ],
     //   },
     // },
-    { field: "class", flex: 2 },
+    { field: "Class", flex: 2 },
     { field: "Date", flex: 2, filter: "agNumberColumnFilter" },
-    { field: "user_name", flex: 2 },
+    { field: "Student ID", flex: 2 },
     {
-      field: "total_time",
+      field: "Total Time in Class",
       flex: 2,
     },
   ]);
@@ -91,21 +85,28 @@ const Table = () => {
 
   return (
     <div className="ag-theme-quartz w-3/4 mx-auto pt-2">
-    <div className="px-4 mx-auto text-center py-1">
-          <p className=" py-4 text-center flex mx-auto justify-center text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">
-            Search for attendance
-          </p>
+      <div className="px-4 mx-auto text-center py-1">
+        <p className=" py-4 text-center flex mx-auto justify-center text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">
+          Search for attendance
+        </p>
+      </div>
+      {rowData ? (
+        <AgGridReact
+          rowData={rowData}
+          columnDefs={columnDefs}
+          defaultColDef={defaultColDef}
+          rowSelection="multiple"
+          suppressRowClickSelection={true}
+          pagination={true}
+          paginationPageSize={20}
+          paginationPageSizeSelector={[200, 500, 1000]}
+        />
+      ) : (
+        <div className="flex flex-col mx-auto items-center justify-center">
+          <Spinner />
+          <p className="pt-5">Loading details...</p>
         </div>
-      {rowData?(<AgGridReact
-        rowData={rowData}
-        columnDefs={columnDefs}
-        defaultColDef={defaultColDef}
-        rowSelection="multiple"
-        suppressRowClickSelection={true}
-        pagination={true}
-        paginationPageSize={20}
-        paginationPageSizeSelector={[200, 500, 1000]}
-      />):(<div className="flex flex-col mx-auto items-center justify-center"><Spinner /><p className="pt-5">Loading details...</p></div>)}
+      )}
     </div>
   );
 };

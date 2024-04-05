@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import AreaChartComponent from "./AreaChartComponent";
 import BarChartComponent from "./BarChartComponent";
